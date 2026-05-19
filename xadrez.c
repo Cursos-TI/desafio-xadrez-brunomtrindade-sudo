@@ -1,51 +1,77 @@
 #include <stdio.h>
 
+// Funções recursivas para os movimentos das peças:
+
+void movimentotorre(int casas) {
+    if(casas > 0) {
+        printf("A torre se moveu 1 casa para a direita\n");
+        movimentotorre(casas - 1);
+    }
+}
+
+void movimentorainha(int casas) {
+    if(casas > 0) {
+        printf("A rainha se moveu 1 casa para a esquerda\n");
+        movimentorainha(casas - 1);
+    }
+}
+
+void movimentobispo(int casas) {
+
+    for(int i = 0; i < 1; i++) {
+
+        for(int j = 0; j < 1; j++) {
+            printf("O bispo se moveu 1 casa para Cima Direita\n");
+        }
+    }
+
+    if(casas > 1) {
+        movimentobispo(casas - 1);
+    }
+}
+
 int main() {
-   
-    //Numero de casas para cada peça:
+
+    // Número de casas para cada peça
     int torre = 5;
     int bispo = 5;
     int rainha = 8;
-    int i;
 
-    //Movimentos Torre:
+    // TORRE 
     printf("Movimentos da Torre:\n");
-    
-    for(i = 0; i < torre; i++) {
-        printf("A torre se moveu 1 casa para a direita\n");
-        
-    }
+
+    movimentotorre(torre);
+
     printf("A torre moveu 5 casas para a direita!\n");
 
-    //Movimentos Bispo:
+    // BISPO
     printf("\nMovimento do Bispo:\n");
-    i = 0;
-    while(i < bispo) {
-        printf("O bispo se moveu 1 casa para Cima Direita\n");
-        i++;
-    }
+
+    movimentobispo(bispo);
+
     printf("O bispo moveu 5 casas para a diagonal superior direita!\n");
 
-    // Movimento da Rainha:
+    // RAINHA 
     printf("\nMovimento da Rainha:\n");
-    i = 0;
-    do {
-        printf("A rainha se moveu 1 casa para a esquerda\n");
-        i++;
-    } while(i < rainha);
+
+    movimentorainha(rainha);
+
     printf("A Rainha moveu 8 casas para a esquerda!\n");
 
-    //Movimentos Cavalo:
+    //  CAVALO 
     printf("\nMovimento do Cavalo:\n");
 
-    for(i = 0; i < 2; i++) {
-        printf("O cavalo se moveu 1 casa para baixo\n");
+    for(int i = 1, vertical = 0; i <= 3; i++) {
 
-        int j = 0;
+        if(vertical < 2) {
+            printf("O cavalo se moveu 1 casa para cima\n");
+            vertical++;
+            continue;
+        }
 
-        while(j < 1) {
-            printf("O cavalo se moveu 1 casa para a esquerda\n");
-            j++;
+        for(int j = 0; j < 1; j++) {
+            printf("O cavalo se moveu 1 casa para a direita\n");
+            break;
         }
     }
 
